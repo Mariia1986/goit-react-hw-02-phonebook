@@ -11,6 +11,7 @@ class ContactForm extends Component {
   handleInput = (e) => {
     // console.log(this.props);
     this.setState({ [e.target.name.toLowerCase()]: e.target.value });
+    
   };
   
 

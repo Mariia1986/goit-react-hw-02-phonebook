@@ -2,7 +2,7 @@ import React from 'react'
 import s from './ContactList.module.css'
 import PropTypes from "prop-types"
 
-const ContactList=({filteredNames})=>{
+const ContactList=({filteredNames, deleteItem})=>{
     
 
 return(
@@ -10,7 +10,9 @@ return(
     <ul >
     {filteredNames.map((el) => (
       <li key={el.id}>
-        {el.name} : {el.number}
+        <p> {el.name} : {el.number}</p>
+        <button  type="button" onClick={()=>deleteItem(el.id)}>Delete</button>
+       
       </li>
     ))}
   </ul>
