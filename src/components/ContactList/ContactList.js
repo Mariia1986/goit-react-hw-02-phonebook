@@ -1,25 +1,31 @@
-import React from 'react'
-import s from './ContactList.module.css'
-import PropTypes from "prop-types"
+import React from "react";
+import s from "./ContactList.module.css";
+import PropTypes from "prop-types";
 
-const ContactList=({filteredNames, deleteItem})=>{
-    
+const ContactList = ({ filteredNames, deleteItem }) => {
+  return (
+    <ul className={s.contaktList}>
+      {filteredNames.map((el) => (
+        <li className={s.contaktListItem} key={el.id}>
+          <p className={s.contaktListName}>
+            
+            {el.name} : {el.number}
+          </p>
+          <button className={s.contaktListButton} type="button" onClick={() => deleteItem(el.id)}>
+            Delete
+          </button>
+        </li>
+      ))}
+    </ul>
+  );
+};
 
-return(
-    
-    <ul >
-    {filteredNames.map((el) => (
-      <li key={el.id}>
-        <p> {el.name} : {el.number}</p>
-        <button  type="button" onClick={()=>deleteItem(el.id)}>Delete</button>
-       
-      </li>
-    ))}
-  </ul>
-
-)
-
+ContactList.propTypes={
+  submit:PropTypes.func.isRequired,
+  contacts:PropTypes.array.isRequired
 }
 
 
-export default ContactList
+
+export default ContactList;
+

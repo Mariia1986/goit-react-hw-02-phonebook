@@ -1,18 +1,25 @@
-import React from 'react'
-import s from './Filter.module.css'
-import PropTypes from 'prop-types'
+import React from "react";
+import s from "./Filter.module.css";
+import PropTypes from "prop-types";
 
-const Filter=( {filter,search})=>{
+const Filter = ({ filter, search }) => {
+  return (
+    <label  className={s.filterLabel}>
+      Find contacts by name
+      <input
+        className={s.filterInput}
+        name="filter"
+        value={filter}
+        onChange={search}
+        type="text"
+      />
+    </label>
+  );
+};
 
-return(
-    <input
-            name="filter"
-            value={filter}
-            onChange={search}
-            type="text"
-          />
-)
+Filter.propTypes = {
+  filter: PropTypes.string.isRequired,
+  search: PropTypes.func.isRequired,
+};
 
-}
-
-export default Filter
+export default Filter;

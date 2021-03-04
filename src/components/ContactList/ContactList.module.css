@@ -1,0 +1,12 @@
+.contaktListItem{
+    display: flex;
+    justify-content: baseline;
+    
+}
+
+.contaktListButton{
+    margin-left: 10px;
+    width: 70px;
+    height: 35px;
+    padding: 0;
+}
