@@ -25,10 +25,12 @@ class ContactForm extends Component  {
     const newContact = { id: uuidv4(), name, number };
     this.props.onSubmit(newContact);
 
-    // this.reset();
+    this.reset()
+   
   }
 
 render(){
+  const { name, number } = this.state;
   return (
 
 
@@ -47,6 +49,7 @@ render(){
           required
           pattern="[A-Za-z]{1,}\s[A-Za-z]{1,}"
           name="name"
+          value={name}
           type="text"
         />
       </label>
@@ -57,7 +60,7 @@ render(){
           required
           onChange={this.handleContactInfo}
           pattern="[0-9]{3}-[0-9]{2}-[0-9]{2}"
-               
+          value={number}    
           htmlFor="number"
           className={s.formInput}
           name="number"
