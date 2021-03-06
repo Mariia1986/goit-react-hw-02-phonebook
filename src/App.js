@@ -17,29 +17,19 @@ class App extends Component {
     filter: "",
   };
 
-  onHandleSubmit = (e) => {
-    e.preventDefault();
-
-    this.state.contacts.forEach((el) => {
-      if (
-        el.name.toLowerCase() === e.target.elements.name.value.toLowerCase()
-      ) {
-        alert(`${e.target.elements.name.value} is already in contacts`);
+  onHandleSubmit = (newContact) => {
+    console.log(newContact)
+    if(this.state.contacts.some(el =>
+  el.name.toLowerCase() === newContact.name.toLowerCase())) {
+        alert(`${newContact.name} is already in contacts`);
         return;
       }
-    });
+      
+    
 
     this.setState((prevState) => ({
-      contacts: [
-        ...prevState.contacts,
-        {
-          name: e.target.elements.name.value,
-          number: e.target.elements.phone.value,
-          id: uuidv4(),
-        },
-      ],
+      contacts: [...prevState.contacts, newContact],
     }));
-
   };
 
   onClickDelete = (id) => {
@@ -47,12 +37,6 @@ class App extends Component {
       contacts: prevState.contacts.filter((el) => el.id !== id),
     }));
   };
-
-  //  resetForm=()=>{
-  //  this.setState({
-
-  //  }
-  //  )}
 
   handleFilter = (e) => {
     this.setState({ filter: e.currentTarget.value });
@@ -68,7 +52,7 @@ class App extends Component {
       <div className="App">
         <h1>Phonebook</h1>
 
-        <ContactForm submit={this.onHandleSubmit} contacts={contacts} />
+        <ContactForm onSubmit={this.onHandleSubmit} />
         <div>
           <h2>Contacts</h2>
           <Filter filter={filter} search={this.handleFilter} />
